@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三国无惨-热血三国题材漫画与同人作品专题站</title>
+    <meta name="description" content="三国无惨专题站，深入解读三国题材黑暗向漫画、同人创作与衍生作品。涵盖角色解析、剧情探讨、人气榜单、同人推荐与创作交流社区。">
+    <meta name="keywords" content="三国无惨,三国题材漫画,黑暗向三国,同人创作,三国角色,无惨,漫画推荐,同人社区">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f4ede4;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-bottom: 3px solid #a33327;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            font-size: 28px;
+            font-weight: 900;
+            color: #c0392b;
+            background: #f5f0e8;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 2px solid #a33327;
+        }
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            color: #f5f0e8;
+            letter-spacing: 2px;
+        }
+        .logo-text span {
+            color: #c0392b;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #d8cfc0;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover {
+            color: #fff;
+            border-bottom-color: #c0392b;
+        }
+        .header-search {
+            display: flex;
+            align-items: center;
+            background: #3d3d3d;
+            border-radius: 30px;
+            padding: 4px 4px 4px 16px;
+        }
+        .header-search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #f0e9df;
+            width: 170px;
+            font-size: 14px;
+        }
+        .header-search button {
+            background: #a33327;
+            border: none;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .header-search button:hover {
+            background: #c0392b;
+        }
+
+        /* 首屏 Hero */
+        .hero-section {
+            background: linear-gradient(135deg, #2a1f1a 0%, #3e2e28 50%, #4a2e26 100%);
+            color: #f0e9df;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(160, 60, 40, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+        .hero-copy {
+            flex: 1 1 400px;
+        }
+        .hero-copy h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: #fff;
+        }
+        .hero-copy h1 span {
+            color: #d35400;
+        }
+        .hero-copy p {
+            font-size: 17px;
+            margin-bottom: 14px;
+            color: #d8cfc0;
+            max-width: 540px;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .hero-badge {
+            background: rgba(160, 60, 40, 0.3);
+            border: 1px solid rgba(200, 100, 70, 0.5);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #e8ddd0;
+        }
+        .hero-art {
+            flex: 0 0 260px;
+            height: 260px;
+            background: linear-gradient(145deg, #4a2e26, #251a15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            font-weight: 900;
+            color: #a33327;
+            border: 2px solid #6b3a2a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .hero-art::before {
+            content: "无惨";
+            position: absolute;
+            bottom: 20px;
+            font-size: 18px;
+            color: #d8cfc0;
+            letter-spacing: 6px;
+        }
+
+        /* 通用栏目 */
+        .section-block {
+            padding: 50px 0;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4c5b0;
+            padding-bottom: 12px;
+        }
+        .section-title h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2d1f18;
+            position: relative;
+            padding-left: 14px;
+        }
+        .section-title h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 5px;
+            height: 24px;
+            background: #a33327;
+            border-radius: 3px;
+        }
+        .section-more {
+            font-size: 14px;
+            color: #a33327;
+            font-weight: 600;
+        }
+
+        /* 分类卡片 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 18px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            border: 1px solid #e4d9cc;
+            transition: 0.25s;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #b05b4a;
+        }
+        .category-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .category-card h3 {
+            font-size: 18px;
+            color: #3d2a20;
+            margin-bottom: 6px;
+        }
+        .category-card p {
+            font-size: 13px;
+            color: #7a6a5c;
+        }
+
+        /* 热门作品 */
+        .hot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .hot-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            border: 1px solid #e8dfd2;
+            transition: 0.25s;
+        }
+        .hot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .hot-cover {
+            height: 160px;
+            background: linear-gradient(135deg, #6b3a2a, #2d1f18);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: rgba(255,255,255,0.4);
+        }
+        .hot-cover .rank {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #c0392b;
+            color: #fff;
+            font-weight: 800;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .hot-info {
+            padding: 18px;
+        }
+        .hot-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #2d1f18;
+        }
+        .hot-info .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .tag {
+            background: #f0e9df;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #6b3a2a;
+        }
+        .hot-info p {
+            font-size: 14px;
+            color: #6b5d50;
+            line-height: 1.5;
+        }
+
+        /* 剧情解析 + 侧栏 */
+        .content-wrap {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .article-list .article-item {
+            background: #fff;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border-left: 4px solid #a33327;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .article-item h3 {
+            font-size: 20px;
+            color: #2d1f18;
+            margin-bottom: 6px;
+        }
+        .article-item .meta {
+            font-size: 13px;
+            color: #9a8d7e;
+            margin-bottom: 8px;
+        }
+        .article-item p {
+            font-size: 15px;
+            color: #4d3f35;
+        }
+        .sidebar-widget {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e8dfd2;
+        }
+        .sidebar-widget h3 {
+            font-size: 18px;
+            border-bottom: 2px solid #e8dfd2;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            color: #2d1f18;
+        }
+        .rank-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e4d9cc;
+            font-size: 14px;
+        }
+        .rank-list li:last-child {
+            border-bottom: none;
+        }
+        .rank-num {
+            font-weight: 800;
+            color: #a33327;
+            margin-right: 10px;
+        }
+        .rank-list .count {
+            color: #9a8d7e;
+            font-size: 13px;
+        }
+        .character-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e4d9cc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+        .character-dot {
+            width: 26px;
+            height: 26px;
+            background: #3e2e28;
+            color: #f0e9df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* 同人创作 */
+        .fan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .fan-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid #e8dfd2;
+            transition: 0.2s;
+        }
+        .fan-card:hover {
+            border-color: #b05b4a;
+        }
+        .fan-card .fan-type {
+            display: inline-block;
+            background: #2d1f18;
+            color: #f0e9df;
+            font-size: 12px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .fan-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #2d1f18;
+        }
+        .fan-card p {
+            font-size: 14px;
+            color: #6b5d50;
+            margin-bottom: 14px;
+        }
+        .fan-author {
+            font-size: 13px;
+            color: #9a8d7e;
+        }
+
+        /* FAQ */
+        .faq-block {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8dfd2;
+            padding: 18px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 700;
+            font-size: 17px;
+            color: #2d1f18;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+        }
+        .faq-q::before {
+            content: "Q";
+            background: #a33327;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .faq-a {
+            font-size: 15px;
+            color: #4d3f35;
+            padding-left: 34px;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #1a1a1a;
+            color: #9a8d7e;
+            padding: 40px 0 30px;
+            margin-top: 50px;
+            border-top: 3px solid #a33327;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-col h4 {
+            color: #e8ddd0;
+            font-size: 16px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .footer-col ul li {
+            padding: 4px 0;
+            font-size: 14px;
+        }
+        .footer-col ul li a:hover {
+            color: #c0392b;
+        }
+        .footer-copy {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .content-wrap {
+                grid-template-columns: 1fr;
+            }
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-copy p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .main-nav ul {
+                justify-content: center;
+                gap: 16px;
+            }
+            .header-search {
+                width: 100%;
+                max-width: 400px;
+            }
+            .header-search input {
+                flex: 1;
+            }
+            .hero-copy h1 {
+                font-size: 32px;
+            }
+            .section-title h2 {
+                font-size: 22px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hot-grid {
+                grid-template-columns: 1fr;
+            }
+            .fan-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-art {
+                width: 200px;
+                height: 200px;
+                font-size: 60px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">三</div>
+                <div class="logo-text">三国<span>无惨</span></div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">作品</a></li>
+                    <li><a href="#">角色</a></li>
+                    <li><a href="#">同人</a></li>
+                    <li><a href="#">讨论</a></li>
+                    <li><a href="#">榜单</a></li>
+                </ul>
+            </nav>
+            <div class="header-search">
+                <input type="text" placeholder="搜索作品/角色">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero 首屏 -->
+    <section class="hero-section">
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <h1>三国<span>无惨</span> · 黑暗叙事下的乱世群像</h1>
+                <p>当权谋、背叛与生存的残酷交织，三国题材的暗黑美学在同人创作中焕发出独特魅力。这里聚集了最硬核的三国黑暗向漫画解读、角色剖析与同人作品。</p>
+                <div class="hero-badges">
+                    <span class="hero-badge">🔥 热门连载</span>
+                    <span class="hero-badge">⚔️ 角色深挖</span>
+                    <span class="hero-badge">🎨 同人创作</span>
+                    <span class="hero-badge">📊 人气榜单</span>
+                </div>
+            </div>
+            <div class="hero-art">
+                无惨
+            </div>
+        </div>
+    </section>
+
+    <!-- 内容分类导航 -->
+    <section class="section-block">
+        <div class="container">
+            <div class="section-title">
+                <h2>作品风格分类</h2>
+                <a href="#" class="section-more">查看全部 →</a>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🩸</div>
+                    <h3>黑暗权谋</h3>
+                    <p>阴谋与背叛交织的生存博弈</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⚔️</div>
+                    <h3>战争悲歌</h3>
+                    <p>战场上的绝望与人性挣扎</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👁️</div>
+                    <h3>志怪异闻</h3>
+                    <p>加入超自然元素的另类三国</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💔</div>
+                    <h3>悲剧英雄</h3>
+                    <p>聚焦英雄末路的悲壮与无奈</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔄</div>
+                    <h3>平行世界</h3>
+                    <p>颠覆历史走向的架空设定</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎭</div>
+                    <h3>同人衍生</h3>
+                    <p>经典角色的再演绎与再创作</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门作品推荐 -->
+    <section class="section-block" style="background: #f9f5ef;">
+        <div class="container">
+            <div class="section-title">
+                <h2>本周热门作品</h2>
+                <a href="#" class="section-more">完整榜单 →</a>
+            </div>
+            <div class="hot-grid">
+                <div class="hot-card">
+                    <div class="hot-cover">
+                        <span class="rank">1</span>
+                        🩸
+                    </div>
+                    <div class="hot-info">
+                        <h3>无惨·长夜</h3>
+                        <div class="tags">
+                            <span class="tag">黑暗权谋</span>
+                            <span class="tag">连载中</span>
+                        </div>
+                        <p>以董卓之乱为起点，描绘乱世中的人性沉沦与权力腐蚀。画风阴郁而张力十足。</p>
+                    </div>
+                </div>
+                <div class="hot-card">
+                    <div class="hot-cover">
+                        <span class="rank">2</span>
+                        ⚔️
+                    </div>
+                    <div class="hot-info">
+                        <h3>赤壁残阳</h3>
+                        <div class="tags">
+                            <span class="tag">战争悲歌</span>
+                            <span class="tag">已完结</span>
+                        </div>
+                        <p>从士兵视角重述赤壁之战，滚滚浓烟之下没有英雄，只有想活下去的普通人。</p>
+                    </div>
+                </div>
+                <div class="hot-card">
+                    <div class="hot-cover">
+                        <span class="rank">3</span>
+                        👁️
+                    </div>
+                    <div class="hot-info">
+                        <h3>洛阳妖乱</h3>
+                        <div class="tags">
+                            <span class="tag">志怪异闻</span>
+                            <span class="tag">高人气</span>
+                        </div>
+                        <p>东汉末年，妖异横行。曹操、袁绍等人与不明力量周旋，历史与奇幻的巧妙融合。</p>
+                    </div>
+                </div>
+                <div class="hot-card">
+                    <div class="hot-cover">
+                        <span class="rank">4</span>
+                        💔
+                    </div>
+                    <div class="hot-info">
+                        <h3>武侯遗恨</h3>
+                        <div class="tags">
+                            <span class="tag">悲剧英雄</span>
+                            <span class="tag">经典</span>
+                        </div>
+                        <p>五丈原之前，诸葛亮最后的岁月。明知不可为而为之的悲壮，读来令人扼腕。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 内容解析 + 侧栏 -->
+    <section class="section-block">
+        <div class="container">
+            <div class="content-wrap">
+                <div>
+                    <div class="section-title">
+                        <h2>深度解析 · 无惨美学</h2>
+                        <a href="#" class="section-more">更多文章 →</a>
+                    </div>
+                    <div class="article-list">
+                        <div class="article-item">
+                            <h3>何为“三国无惨”：黑暗叙事的魅力所在</h3>
+                            <div class="meta">2024-12-18 · 专题策划</div>
+                            <p>三国题材向来不缺英雄史诗，但“无惨”视角则主动剥离浪漫滤镜，直面战争的血腥与政治的无情。它不试图美化任何一方，而是让每个角色在极端情境下做出选择，呈现出人性的复杂光谱。</p>
+                        </div>
+                        <div class="article-item">
+                            <h3>从董卓到司马昭：权力游戏中的悲剧轮回</h3>
+                            <div class="meta">2024-12-10 · 剧情分析</div>
+                            <p>若将东汉末年至三国归晋看作一场漫长的权力游戏，那么每一轮更替都伴随着相似的背叛与杀戮。许多无惨向作品正是抓住了这种结构性悲剧，让读者感受到历史洪流下个人的无力。</p>
+                        </div>
+                        <div class="article-item">
+                            <h3>角色再诠释：当英雄不再完美</h3>
+                            <div class="meta">2024-12-02 · 角色研究</div>
+                            <p>在无惨风格的同人创作中，关羽的骄傲、曹操的猜忌、刘备的仁义，都可能被放大为致命的缺陷。这种再诠释并非贬低，而是试图探讨：如果历史的偶然因素改变，英雄是否还会是英雄？</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside>
+                    <div class="sidebar-widget">
+                        <h3>🔥 人气角色榜</h3>
+                        <ul class="rank-list">
+                            <li><span><span class="rank-num">1</span>郭嘉（无惨ver.）</span><span class="count">热度 98.2k</span></li>
+                            <li><span><span class="rank-num">2</span>曹操（黑化线）</span><span class="count">热度 95.7k</span></li>
+                            <li><span><span class="rank-num">3</span>荀彧（悲剧向）</span><span class="count">热度 89.4k</span></li>
+                            <li><span><span class="rank-num">4</span>周瑜（病弱设定）</span><span class="count">热度 84.1k</span></li>
+                            <li><span><span class="rank-num">5</span>姜维（末路英雄）</span><span class="count">热度 79.6k</span></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h3>🎭 热门同人CP</h3>
+                        <ul class="character-list">
+                            <li><span class="character-dot">曹</span>曹操 × 荀彧 <span style="margin-left:auto; font-size:12px; color:#a33327;">虐恋</span></li>
+                            <li><span class="character-dot">策</span>孙策 × 周瑜 <span style="margin-left:auto; font-size:12px; color:#a33327;">白月光</span></li>
+                            <li><span class="character-dot">嘉</span>郭嘉 × 曹操 <span style="margin-left:auto; font-size:12px; color:#a33327;">病弱</span></li>
+                            <li><span class="character-dot">亮</span>诸葛亮 × 姜维 <span style="margin-left:auto; font-size:12px; color:#a33327;">传承</span></li>
+                            <li><span class="character-dot">懿</span>司马懿 × 张春华 <span style="margin-left:auto; font-size:12px; color:#a33327;">夫妻</span></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- 同人创作区 -->
+    <section class="section-block" style="background: #f9f5ef;">
+        <div class="container">
+            <div class="section-title">
+                <h2>🎨 同人创作交流</h2>
+                <a href="#" class="section-more">进入创作区 →</a>
+            </div>
+            <div class="fan-grid">
+                <div class="fan-card">
+                    <span class="fan-type">短篇漫画</span>
+                    <h3>《未寄出的信》</h3>
+                    <p>荀彧在空食盒事件前的最后一封家书。细腻的笔触描绘了他内心的挣扎与决绝。</p>
+                    <div class="fan-author">作者：纸上谈兵 · 已完结</div>
+                </div>
+                <div class="fan-card">
+                    <span class="fan-type">插画</span>
+                    <h3>【黑化】魏武挥鞭</h3>
+                    <p>曹操在赤壁大败后的孤身背影，配合翻涌的江水，将枭雄的落寞展现得淋漓尽致。</p>
+                    <div class="fan-author">作者：砚台墨 · 单幅</div>
+                </div>
+                <div class="fan-card">
+                    <span class="fan-type">小说</span>
+                    <h3>《白帝城夜雨》</h3>
+                    <p>刘备临终前与诸葛亮的最后对话，如果当初夷陵之战没有发生，历史会走向何方？</p>
+                    <div class="fan-author">作者：卧龙小生 · 连载中</div>
+                </div>
+                <div class="fan-card">
+                    <span class="fan-type">条漫</span>
+                    <h3>假如郭嘉没有早逝</h3>
+                    <p>轻松向脑洞，但夹杂着对历史必然性的思考。郭嘉与曹操的日常互动让人会心一笑。</p>
+                    <div class="fan-author">作者：奉孝不哭 · 已完结</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 板块 -->
+    <section class="section-block">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于“三国无惨”的常见疑问</h2>
+            </div>
+            <div class="faq-block">
+                <div class="faq-item">
+                    <div class="faq-q">“三国无惨”具体指什么？</div>
+                    <div class="faq-a">它并非某个单一作品的官方名称，而是爱好者对三国题材中偏黑暗、残酷、悲剧风格作品的总称。这些作品往往强调战争残酷、政治阴谋和人性的阴暗面，与传统的英雄史诗叙事形成对比。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">这类作品与正史或《三国演义》有什么关联？</div>
+                    <div class="faq-a">大多数创作以《三国演义》为基底，部分会参考《三国志》等史料。但无惨向作品常常会改变历史细节或人物命运，以服务于其独特的悲剧美学，因此更适合作为独立的艺术创作来欣赏。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">在哪里可以找到更多三国无惨风格的作品？</div>
+                    <div class="faq-a">可以在各大漫画平台搜索“黑暗三国”“权谋三国”等标签，同人创作则多见于绘画或小说社区。此外，本专题站也会持续整理推荐优质作品，欢迎关注更新。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">为什么这种风格越来越受欢迎？</div>
+                    <div class="faq-a">一方面，读者对扁平化的英雄叙事已产生审美疲劳；另一方面，复杂而充满道德困境的故事更能引发思考。在视觉上，黑暗风格也往往更具冲击力与艺术表现空间。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <h4>三国无惨</h4>
+                    <ul>
+                        <li><a href="#">关于本站</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>内容专题</h4>
+                    <ul>
+                        <li><a href="#">黑暗权谋解析</a></li>
+                        <li><a href="#">悲剧角色排行</a></li>
+                        <li><a href="#">同人创作精选</a></li>
+                        <li><a href="#">历史 vs 演义</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>社区互动</h4>
+                    <ul>
+                        <li><a href="#">讨论版</a></li>
+                        <li><a href="#">创作接龙</a></li>
+                        <li><a href="#">角色投票</a></li>
+                        <li><a href="#">线下交流</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copy">
+                <p>© 2024 三国无惨专题站 · 本页面为同人文化爱好者整理，非商业用途。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
