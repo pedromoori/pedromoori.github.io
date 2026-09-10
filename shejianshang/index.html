@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舌尖上的美食游-寻味中国各地特色美食与旅行攻略</title>
+    <meta name="description" content="舌尖上的美食游，带您探索中国各地特色美食、街头小吃、地方菜系与旅行美食地图。提供美食推荐、旅行探店指南、风味文化解读，为热爱美食与旅行的您提供真实可靠的寻味参考。">
+    <meta name="keywords" content="舌尖上的美食游, 美食旅行, 地方特色美食, 美食攻略, 美食探店, 中国美食地图, 风味小吃">
+    <style>
+        /* 全局重置与基础 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #fef9ec; /* 暖色米白，营造食欲氛围 */
+            color: #3e2e1f;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* 头部与导航 */
+        .site-header {
+            background: linear-gradient(135deg, #d94b28 0%, #f2703a 100%);
+            color: #fff;
+            padding: 16px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .brand-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            font-size: 1.05rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        .main-nav a:hover {
+            border-bottom-color: #ffe1b3;
+            color: #ffe1b3;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* 首屏 Hero 区域 */
+        .hero {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="%23f7debb"/><circle cx="150" cy="100" r="40" fill="%23e7b77b" opacity="0.6"/><circle cx="400" cy="280" r="70" fill="%23d95d39" opacity="0.25"/><circle cx="950" cy="120" r="90" fill="%23bd7a4b" opacity="0.2"/><path d="M0,320 Q300,220 600,320 T1200,280 L1200,400 L0,400 Z" fill="%23d94b28" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 72px 0 80px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 700px;
+            background: rgba(255, 245, 235, 0.85);
+            backdrop-filter: blur(2px);
+            padding: 40px 44px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(120, 60, 20, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .hero h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #b22c10;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 28px;
+            color: #4b3a2b;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            background: #d94b28;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(200, 60, 20, 0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #d94b28;
+            color: #d94b28;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #d94b28;
+            color: #fff;
+        }
+        .btn:hover {
+            background: #b9381a;
+            transform: translateY(-2px);
+        }
+
+        /* 通用板块标题 */
+        .section {
+            padding: 60px 0;
+        }
+        .section-alt {
+            background: #fbeedb;
+        }
+        .section-head {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .section-head h2 {
+            font-size: 2.1rem;
+            color: #c03a1a;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 8px;
+        }
+        .section-head h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            border-radius: 4px;
+            background: #f0a04b;
+        }
+        .section-head p {
+            font-size: 1.1rem;
+            color: #6e5a48;
+            max-width: 600px;
+            margin: 12px auto 0;
+        }
+
+        /* 美食地域分类卡片 */
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .region-card {
+            background: #fffaf2;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #f5ddc2;
+        }
+        .region-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 30px rgba(180, 80, 20, 0.12);
+        }
+        .region-thumb {
+            height: 180px;
+            background: linear-gradient(145deg, #f2c79b, #e7aa6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.6rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .region-info {
+            padding: 20px 18px 24px;
+        }
+        .region-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #96351a;
+        }
+        .region-info p {
+            font-size: 0.95rem;
+            color: #6d5844;
+            margin-bottom: 14px;
+        }
+        .region-tag {
+            display: inline-block;
+            background: #f9d7b0;
+            color: #85431f;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 6px;
+        }
+
+        /* 热门美食榜单 */
+        .hot-list {
+            background: #fff8ee;
+            border-radius: 24px;
+            padding: 30px 36px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .hot-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px dashed #e8cbb0;
+        }
+        .hot-item:last-child {
+            border-bottom: none;
+        }
+        .hot-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ef7e4c;
+            width: 60px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .hot-content {
+            flex: 1;
+        }
+        .hot-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .hot-content p {
+            color: #77634f;
+            font-size: 0.95rem;
+        }
+        .hot-location {
+            background: #f5d5b5;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            color: #7b3a1a;
+            font-weight: 500;
+        }
+
+        /* 旅行美食线路推荐 */
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+        .route-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #f0d7be;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .route-card:hover {
+            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+        }
+        .route-map {
+            height: 140px;
+            background: linear-gradient(130deg, #b9d8c1, #a3c9b0);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .route-map::after {
+            content: '📍';
+            position: absolute;
+            font-size: 2rem;
+            bottom: 8px;
+            right: 14px;
+        }
+        .route-info {
+            padding: 20px 18px;
+        }
+        .route-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .route-info p {
+            font-size: 0.92rem;
+            color: #6d5844;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .route-days {
+            font-size: 0.85rem;
+            background: #f6e3cd;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: #a04e20;
+            font-weight: 500;
+        }
+
+        /* 美食文化交流 */
+        .culture-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .culture-text h3 {
+            font-size: 1.6rem;
+            color: #b3381c;
+            margin-bottom: 18px;
+        }
+        .culture-text p {
+            margin-bottom: 16px;
+            font-size: 1.02rem;
+        }
+        .culture-quote {
+            background: #f9e3cd;
+            padding: 24px 28px;
+            border-radius: 16px;
+            font-style: italic;
+            border-left: 6px solid #d94b28;
+            margin-top: 18px;
+        }
+
+        /* 寻味小贴士 */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .tip-card {
+            background: #fff8ef;
+            border-radius: 16px;
+            padding: 24px 22px;
+            border: 1px solid #eedcc7;
+        }
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .tip-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #a9421f;
+        }
+        .tip-card p {
+            font-size: 0.9rem;
+            color: #5f4c3b;
+        }
+
+        /* 常见问题 FAQ */
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fffdf8;
+            border-radius: 14px;
+            margin-bottom: 14px;
+            border: 1px solid #f0decc;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .faq-q {
+            padding: 18px 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #713a1f;
+            background: #fdf4e8;
+        }
+        .faq-q::after {
+            content: '+';
+            font-size: 1.8rem;
+            color: #d94b28;
+            transition: 0.3s;
+        }
+        .faq-item.active .faq-q::after {
+            content: '−';
+        }
+        .faq-a {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.4s ease;
+            color: #5a4736;
+            font-size: 0.98rem;
+            background: white;
+        }
+        .faq-item.active .faq-a {
+            padding: 4px 24px 20px;
+            max-height: 500px;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #2e241b;
+            color: #d8c9bb;
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-about h3 {
+            color: #f7b27a;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .footer-about p {
+            font-size: 0.9rem;
+            max-width: 360px;
+        }
+        .footer-links h4 {
+            color: #f7b27a;
+            margin-bottom: 16px;
+        }
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #4a3d31;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            color: #a3907e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .region-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .route-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .culture-box {
+                grid-template-columns: 1fr;
+            }
+            .tips-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            .main-nav {
+                display: none;
+                width: 100%;
+                background: rgba(0,0,0,0.1);
+                border-radius: 12px;
+                padding: 16px;
+            }
+            .main-nav.open {
+                display: block;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero {
+                padding: 40px 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-content {
+                padding: 30px 24px;
+            }
+            .region-grid {
+                grid-template-columns: 1fr;
+            }
+            .route-grid {
+                grid-template-columns: 1fr;
+            }
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            .hot-item {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .hot-location {
+                margin-left: 60px;
+            }
+            .section {
+                padding: 40px 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .brand-name {
+                font-size: 1.3rem;
+            }
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="brand">
+            <span class="brand-icon">🍜</span>
+            <span class="brand-name">舌尖上的美食游</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#region">风味地图</a></li>
+                <li><a href="#hot">人气榜单</a></li>
+                <li><a href="#route">寻味路线</a></li>
+                <li><a href="#culture">饮食文化</a></li>
+                <li><a href="#tips">探店贴士</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- 首屏简介 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>舌尖上的美食游</h1>
+                <p>从街头小吃到地方名宴，跟随味蕾去旅行。我们挖掘每一座城市最地道的美味，为你绘制一份可吃、可玩、可品的风味地图。</p>
+                <div class="hero-actions">
+                    <a href="#region" class="btn">探索风味地图</a>
+                    <a href="#hot" class="btn btn-outline">查看热门美食</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 地域风味分类 -->
+    <section class="section" id="region">
+        <div class="container">
+            <div class="section-head">
+                <h2>地域风味 · 食在四方</h2>
+                <p>中国饮食文化博大精深，八大菜系之外更有无数地方特色。从川渝的麻辣到江南的清淡，每一种风味都值得专程前往。</p>
+            </div>
+            <div class="region-grid">
+                <article class="region-card">
+                    <div class="region-thumb">🌶️</div>
+                    <div class="region-info">
+                        <h3>川渝地区</h3>
+                        <p>麻辣鲜香，百菜百味。火锅、小面、串串香，街头巷尾的烟火气令人上瘾。</p>
+                        <span class="region-tag">火锅</span>
+                        <span class="region-tag">小面</span>
+                        <span class="region-tag">钵钵鸡</span>
+                    </div>
+                </article>
+                <article class="region-card">
+                    <div class="region-thumb">🥟</div>
+                    <div class="region-info">
+                        <h3>华北平原</h3>
+                        <p>面食的天下。炸酱面、驴打滚、煎饼果子，朴实中藏着地道功夫。</p>
+                        <span class="region-tag">炸酱面</span>
+                        <span class="region-tag">卤煮</span>
+                        <span class="region-tag">驴肉火烧</span>
+                    </div>
+                </article>
+                <article class="region-card">
+                    <div class="region-thumb">🦞</div>
+                    <div class="region-info">
+                        <h3>江浙沪</h3>
+                        <p>清鲜平和，浓淡相宜。小笼包、糖醋排骨、醉蟹，讲究食材本味。</p>
+                        <span class="region-tag">小笼包</span>
+                        <span class="region-tag">腌笃鲜</span>
+                        <span class="region-tag">生煎</span>
+                    </div>
+                </article>
+                <article class="region-card">
+                    <div class="region-thumb">🍲</div>
+                    <div class="region-info">
+                        <h3>岭南地区</h3>
+                        <p>从早茶到夜宵，讲究鲜活与火候。烧腊、砂锅粥、糖水铺，治愈身心。</p>
+                        <span class="region-tag">早茶</span>
+                        <span class="region-tag">烧鹅</span>
+                        <span class="region-tag">双皮奶</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门人气美食 -->
+    <section class="section section-alt" id="hot">
+        <div class="container">
+            <div class="section-head">
+                <h2>本月人气美食榜</h2>
+                <p>根据各地食客口碑与旅行者推荐整理，这些味道值得你专程出发。</p>
+            </div>
+            <div class="hot-list">
+                <div class="hot-item">
+                    <div class="hot-rank">01</div>
+                    <div class="hot-content">
+                        <h3>重庆老火锅</h3>
+                        <p>九宫格沸腾的红油里，毛肚、鸭肠七上八下，是山城最热辣的欢迎礼。</p>
+                    </div>
+                    <div class="hot-location">📍 重庆</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-rank">02</div>
+                    <div class="hot-content">
+                        <h3>西安羊肉泡馍</h3>
+                        <p>亲手掰馍，再交给师傅烹煮，一碗下肚，豪迈又暖心。</p>
+                    </div>
+                    <div class="hot-location">📍 西安</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-rank">03</div>
+                    <div class="hot-content">
+                        <h3>长沙臭豆腐</h3>
+                        <p>黑色酥脆的外壳，浇上辣椒蒜汁，闻着臭吃着香，街头排队王。</p>
+                    </div>
+                    <div class="hot-location">📍 长沙</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-rank">04</div>
+                    <div class="hot-content">
+                        <h3>广州早茶虾饺</h3>
+                        <p>晶莹剔透的皮裹着整只鲜虾，一口一个鲜，是老广的清晨仪式。</p>
+                    </div>
+                    <div class="hot-location">📍 广州</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-rank">05</div>
+                    <div class="hot-content">
+                        <h3>柳州螺蛳粉</h3>
+                        <p>酸笋的独特香气，配上螺蛳汤的浓郁，让人欲罢不能的广西味。</p>
+                    </div>
+                    <div class="hot-location">📍 柳州</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 美食旅行线路 -->
+    <section class="section" id="route">
+        <div class="container">
+            <div class="section-head">
+                <h2>寻味主题路线</h2>
+                <p>为美食出发的旅行，我们帮你规划好路线，不走回头路，吃遍精华。</p>
+            </div>
+            <div class="route-grid">
+                <article class="route-card">
+                    <div class="route-map">🥘</div>
+                    <div class="route-info">
+                        <h3>川渝麻辣之旅</h3>
+                        <p>成都→乐山→重庆，从钵钵鸡到跷脚牛肉再到火锅，四天三晚感受麻辣的层次。</p>
+                        <span class="route-days">⏱ 4天3晚</span>
+                    </div>
+                </article>
+                <article class="route-card">
+                    <div class="route-map">🍤</div>
+                    <div class="route-info">
+                        <h3>广式早茶·寻味顺德</h3>
+                        <p>广州叹早茶，顺德吃鱼生、双皮奶，两天一夜品味南粤的鲜甜。</p>
+                        <span class="route-days">⏱ 2天1晚</span>
+                    </div>
+                </article>
+                <article class="route-card">
+                    <div class="route-map">🍜</div>
+                    <div class="route-info">
+                        <h3>江南面食与小吃漫游</h3>
+                        <p>苏州、无锡、上海，从奥灶面到小笼包，三天两晚体验江南的精细。</p>
+                        <span class="route-days">⏱ 3天2晚</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 饮食文化探源 -->
+    <section class="section section-alt" id="culture">
+        <div class="container culture-box">
+            <div class="culture-text">
+                <h3>食物背后的风土人情</h3>
+                <p>每一道地方美食都承载着一方水土的记忆。四川人爱花椒，因为盆地潮湿；广东人爱煲汤，因为气候炎热。了解这些文化背景，会让旅途中的每一餐更有滋味。</p>
+                <p>我们关注的不只是“吃什么”，更是“为什么这里的人这样吃”。从食材选择到烹饪方式，从节日食俗到日常餐桌，食物里藏着最鲜活的地域性格。</p>
+                <div class="culture-quote">
+                    “乡愁，有时就是味觉上的思念。无论走多远，舌尖总记得回家的路。”
+                </div>
+            </div>
+            <div style="background: #f4d5b6; border-radius: 30px; padding: 40px 30px; text-align: center; font-size: 6rem; box-shadow: inset 0 0 30px rgba(0,0,0,0.05);">
+                🥢<br><span style="font-size: 1.4rem; color: #7b4a2c;">一方水土养一方味</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 探店贴士 -->
+    <section class="section" id="tips">
+        <div class="container">
+            <div class="section-head">
+                <h2>寻味小贴士</h2>
+                <p>让你的美食之旅更顺畅、更地道。</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🕒</div>
+                    <h3>错峰打卡</h3>
+                    <p>热门老店建议开门前就到，或选择下午2-4点的非正餐时段，减少排队时间。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🗣️</div>
+                    <h3>问问本地人</h3>
+                    <p>在菜市场或小区楼下，和当地大爷大妈聊两句，往往能收获攻略上没有的隐藏美味。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🥡</div>
+                    <h3>少量多样</h3>
+                    <p>一次别点太多，每样少来一些，才能多品尝几种特色，也避免浪费。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="section section-alt" id="faq">
+        <div class="container">
+            <div class="section-head">
+                <h2>关于美食游，你可能会问</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q">如何找到当地人常去的老店？</div>
+                    <div class="faq-a">除了参考旅行App的本地榜单，更推荐去老居民区附近观察。看一家店门口是否坐着不少本地老人或带着孩子的家庭，这类店铺通常口味稳定、价格实惠。另外可以多留意菜市场周边，好吃的往往藏在最日常的地方。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">去不同城市旅行，饮食上有什么需要注意的？</div>
+                    <div class="faq-a">首先注意辣度适应，川渝、湖南等地的辣可能超出想象，建议先点微辣。其次留意食材，比如沿海城市海鲜较多，肠胃敏感者要适量。最后，尊重当地饮食习俗，例如部分少数民族地区有特定的饮食禁忌，提前了解能避免尴尬。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">如何规划一条以美食为主的旅行路线？</div>
+                    <div class="faq-a">建议先确定想吃的地道菜系，然后选择1-2个核心城市，不要贪多。每天安排2-3个美食点，上午去老字号吃早午餐，下午逛市场或小吃街，晚上找一家口碑正餐店。中间穿插景点散步消食，这样节奏舒适也不会太累。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">预算有限，怎么吃得地道又不超支？</div>
+                    <div class="faq-a">可以把大餐安排在中午，很多餐馆中午套餐比晚餐便宜。小吃和路边摊往往是性价比之王，同时也能体验最真实的风味。住宿选择有厨房或靠近夜市的青旅/民宿，既能自己买食材做简餐，晚上下楼就能吃宵夜。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-about">
+                <h3>🍜 舌尖上的美食游</h3>
+                <p>我们致力于成为你身边最贴心的美食旅行伙伴。每一条路线、每一家店铺，都经过认真考量，只为了让你在旅途中吃得开心、玩得尽兴。</p>
+            </div>
+            <div class="footer-links">
+                <h4>美食专题</h4>
+                <ul>
+                    <li><a href="#">地方小吃地图</a></li>
+                    <li><a href="#">深夜食堂推荐</a></li>
+                    <li><a href="#">菜市场漫游</a></li>
+                    <li><a href="#">早餐中国行</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">寻味故事</a></li>
+                    <li><a href="#">加入美食探员</a></li>
+                    <li><a href="#">商务合作</a></li>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 舌尖上的美食游 · 用心寻味，真诚分享 | 本站内容仅供参考，口味因人而异</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 移动端导航切换
+    document.getElementById('navToggle').addEventListener('click', function() {
+        document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    // FAQ 手风琴
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+        item.querySelector('.faq-q').addEventListener('click', function() {
+            const wasActive = item.classList.contains('active');
+            // 关闭所有
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('active');
+            });
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+</body>
+  </html>
